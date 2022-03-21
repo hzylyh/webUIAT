@@ -10,11 +10,11 @@ LastEditTime: 2022-03-19 15:22:06
 import csv
 
 from entity.case_entity import CaseEntity
-
+from constant.constant import *
 
 def from_csv() -> object:
     cases = []
-    with open('/Users/houzheyu/Workspace/personal/code/python/webUIAT/testcase/测试系统.csv') as f:
+    with open(APP['framework']['case']['file-path'], mode='r', encoding='utf-8') as f:
         f_csv = csv.reader(f)
         for i, line in enumerate(f_csv):
             if i != 0:

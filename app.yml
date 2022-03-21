@@ -1,0 +1,10 @@
+selenium:
+  driver-path: /Users/houzheyu/Workspace/personal/code/python/chromedriver/99.0.4844.51/chromedriver
+
+framework:
+  case:
+    file-path: /Users/houzheyu/Workspace/personal/code/python/webUIAT/testcase/测试系统.csv
+
+
+  po:
+    file-path: /Users/houzheyu/Workspace/personal/code/python/webUIAT/po/测试系统/

@@ -11,12 +11,13 @@ import os
 import yaml
 
 from entity.po_entity import POEntity
+from constant.constant import *
 
 po_manager = {}
 
 
 def load_project():
-    dir = '/Users/houzheyu/Workspace/personal/code/python/webUIAT/po/测试系统/'
+    dir = APP['framework']['po']['file-path']
     files = os.listdir(dir)
     for file in files:
         po = read_po(dir + file)

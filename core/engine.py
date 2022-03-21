@@ -6,17 +6,16 @@ Date: 2022-03-19 13:44:11
 LastEditors: John Holl
 LastEditTime: 2022-03-19 15:12:43
 '''
+
 import time
-
 from selenium.webdriver.remote.webdriver import WebDriver
-
 from core import case_handler
 from core import parse_po
 from entity.case_entity import CaseEntity
 from typing import List, Dict
 from selenium import webdriver
-
 from entity.po_entity import POEntity
+from constant.constant import *
 
 
 def load_case() -> List[CaseEntity]:
@@ -39,7 +38,7 @@ def run():
     cases = load_case()
     po_manager = load_po()
     driver = webdriver.Chrome(
-        executable_path='/Users/houzheyu/Workspace/personal/code/python/chromedriver/99.0.4844.51/chromedriver')
+        executable_path=APP['selenium']['driver-path'])
     driver.get('https://www.baidu.com')
     for case in cases:
         handle = po_manager[case.page][case.step]
