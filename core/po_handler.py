@@ -8,9 +8,6 @@ LastEditTime: 2022-03-19 15:24:12
 """
 
 import os
-import yaml
-
-from entity.po_entity import POEntity
 from constant.constant import *
 
 po_manager = {}
@@ -31,10 +28,6 @@ def read_po(file_path: object) -> object:
         data = yaml.load(file_date, Loader=yaml.FullLoader)
         po_new = dict()
         for obj, obj_v in data.items():
+            po_new[obj] = obj_v
 
-            if len(obj_v) == 4:
-                po_ent = POEntity(obj_v['定位类型'], obj_v['值'], obj_v['动作'], obj_v['预期'])
-            else:
-                po_ent = POEntity(obj_v['定位类型'], obj_v['值'], obj_v['动作'], None)
-            po_new[obj] = po_ent
         return po_new

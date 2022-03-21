@@ -10,11 +10,10 @@ LastEditTime: 2022-03-19 15:12:43
 import time
 from selenium.webdriver.remote.webdriver import WebDriver
 from core import case_handler
-from core import parse_po
+from core import po_handler
 from entity.case_entity import CaseEntity
 from typing import List, Dict
 from selenium import webdriver
-from entity.po_entity import POEntity
 from constant.constant import *
 
 
@@ -23,15 +22,16 @@ def load_case() -> List[CaseEntity]:
 
 
 def load_po() -> Dict:
-    return parse_po.load_project()
+    return po_handler.load_project()
 
 
-def execute(driver: WebDriver, handle: POEntity):
-    ele = driver.find_element(by=handle.type, value=handle.value)
-    if handle.action == 'input':
-        ele.send_keys('ddd')
-    elif handle.action == 'click':
+def execute(driver: WebDriver, handle: Dict, case: CaseEntity):
+    ele = driver.find_element(by=handle['type'], value=handle['value'])
+    if handle['action'] == 'input':
+        ele.send_keys(case.val)
+    elif handle['action'] == 'click':
         ele.click()
+        time.sleep(10)
 
 
 def run():
@@ -39,12 +39,9 @@ def run():
     po_manager = load_po()
     driver = webdriver.Chrome(
         executable_path=APP['selenium']['driver-path'])
-    driver.get('https://www.baidu.com')
+    driver.get('https://ibmas-test.csc.com.cn:7443/')
+    time.sleep(10)
     for case in cases:
         handle = po_manager[case.page][case.step]
-        ele = driver.find_element(by=handle.type, value=handle.value)
-        if handle.action == 'input':
-            ele.send_keys('ddd')
-        elif handle.action == 'click':
-            ele.click()
-            time.sleep(10)
+        execute(driver, handle, case)
+

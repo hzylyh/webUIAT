@@ -1,9 +1,19 @@
-输入搜索词:
-  定位类型: id
-  值: kw
-  动作: input
+输入用户名:
+  type: id
+  value: username
+  action: input
 
-点击搜索:
-  定位类型: id
-  值: su
-  动作: click
+输入密码:
+  type: id
+  value: password
+  action: input
+
+点击登录:
+  type: id
+  value: submit1
+  action: click
+
+密码登录:
+  type: id
+  value: qrcode_btn1
+  action: click
