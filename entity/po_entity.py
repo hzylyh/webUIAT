@@ -1,11 +1,11 @@
-'''
-Description: 
+"""
+Description:
 Author: John Holl
 Github: https://github.com/hzylyh
 Date: 2022-03-19 14:02:48
 LastEditors: John Holl
 LastEditTime: 2022-03-19 14:19:05
-'''
+"""
 
 
 class POEntity:
