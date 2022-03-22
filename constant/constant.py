@@ -14,8 +14,6 @@ def get_conf(filename) -> object:
     with open(filename, mode='r', encoding='utf-8') as f:
         file_date = f.read()
         data = yaml.load(file_date, Loader=yaml.FullLoader)
-        # po_new = dict()
-        print(data)
         return data
 
 

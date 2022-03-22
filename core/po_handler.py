@@ -29,5 +29,4 @@ def read_po(file_path: object) -> object:
         po_new = dict()
         for obj, obj_v in data.items():
             po_new[obj] = obj_v
-
         return po_new

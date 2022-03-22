@@ -7,6 +7,8 @@ LastEditors: John Holl
 LastEditTime: 2022-03-19 14:50:16
 """
 # from selenium import webdriver
+import logging
+
 from core import engine
 
 # driver = webdriver.Chrome(
@@ -14,5 +16,9 @@ from core import engine
 # driver.get('http://www.baidu.com')
 # driver.maximize_window()
 
+LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
+
 if __name__ == '__main__':
+    logging.basicConfig(filename='log/webUIAT.log', level=logging.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
     engine.run()

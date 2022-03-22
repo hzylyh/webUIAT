@@ -9,7 +9,6 @@ LastEditTime: 2022-03-19 15:22:06
 
 import csv
 import os
-
 from entity.case_entity import CaseEntity
 from constant.constant import *
 
