@@ -6,7 +6,7 @@ Date: 2022-03-19 13:42:16
 LastEditors: John Holl
 LastEditTime: 2022-03-19 15:24:12
 """
-
+import logging
 import os
 from constant.constant import *
 
@@ -19,7 +19,8 @@ def load_project():
     for file in files:
         po = read_po(dir + '/' + file)
         po_manager[file.split('.')[0]] = po
-        return po_manager
+    logging.info(po_manager)
+    return po_manager
 
 
 def read_po(file_path: object) -> object:

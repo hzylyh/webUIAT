@@ -27,4 +27,4 @@ def from_csv() -> object:
                     else:
                         case = CaseEntity(line[0], line[1], line[2], line[3], '')
                     cases.append(case)
-        return cases
+    return cases

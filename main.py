@@ -20,5 +20,6 @@ LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 
 if __name__ == '__main__':
-    logging.basicConfig(filename='log/webUIAT.log', level=logging.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
+    # logging.basicConfig(filename='log/webUIAT.log', level=logging.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
+    logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
     engine.run()
