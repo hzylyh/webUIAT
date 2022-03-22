@@ -10,8 +10,8 @@ LastEditTime: 2022/3/21 3:33 PM
 import yaml
 
 
-def get_conf() -> object:
-    with open('app.yml', mode='r', encoding='utf-8') as f:
+def get_conf(filename) -> object:
+    with open(filename, mode='r', encoding='utf-8') as f:
         file_date = f.read()
         data = yaml.load(file_date, Loader=yaml.FullLoader)
         # po_new = dict()
@@ -19,4 +19,17 @@ def get_conf() -> object:
         return data
 
 
-APP = get_conf()
+def get_app_conf():
+    return get_conf('application.yml')
+
+
+def get_project_conf():
+    app_conf = get_conf('application.yml')
+    return get_conf(app_conf['project']['path'] + '/project.yml')
+
+
+APP = get_app_conf()
+PROJECT = get_project_conf()
+
+PO_SUFFIX = '/po'
+CASE_SUFFIX = '/testcase'

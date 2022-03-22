@@ -14,10 +14,10 @@ po_manager = {}
 
 
 def load_project():
-    dir = APP['framework']['po']['file-path']
+    dir = APP['project']['path'] + PO_SUFFIX
     files = os.listdir(dir)
     for file in files:
-        po = read_po(dir + file)
+        po = read_po(dir + '/' + file)
         po_manager[file.split('.')[0]] = po
         return po_manager
 

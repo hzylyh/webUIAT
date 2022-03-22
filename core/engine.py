@@ -38,7 +38,7 @@ def run():
     cases = load_case()
     po_manager = load_po()
     driver = webdriver.Chrome(
-        executable_path=APP['selenium']['driver-path'])
+        executable_path=PROJECT['selenium']['driver-path'])
     driver.get('https://ibmas-test.csc.com.cn:7443/')
     time.sleep(10)
     for case in cases:
