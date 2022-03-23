@@ -7,10 +7,8 @@ LastEditors: John Holl
 LastEditTime: 2022-03-19 15:12:43
 """
 import logging
-import time
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
-
 from core import case_handler
 from core import po_handler
 from entity.case_entity import CaseEntity
@@ -48,6 +46,12 @@ def execute(driver: WebDriver, handle: Dict, case: CaseEntity):
     elif handle['action'] == 'click':
         logging.info("click")
         ele.click()
+    elif handle['action'] == 'check':  # 此处后续扩展，可接收check数组，并且可以接收多种比对方式
+        logging.info('check')
+        if ele.text == case.expect_val:
+            logging.info('----------pass------------')
+        else:
+            logging.info('----------fail------------')
 
 
 def run():
@@ -62,6 +66,6 @@ def run():
     driver.get(PROJECT['selenium']['web-url'])
     driver.maximize_window()
     for case in cases:
-        handle = po_manager[case.page][case.step]
+        handle = po_manager[case.page][case.prop]
         execute(driver, handle, case)
 
