@@ -15,7 +15,7 @@
 ## 启动
 ```shell
 # 1.新建虚拟环境
-python3 -m venv ./venv2
+python3 -m venv ./venv
 
 # 2.安装依赖
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
