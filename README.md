@@ -14,12 +14,16 @@
 
 ## 启动
 ```shell
-# 1.新建虚拟环境
+# 1.克隆项目
+git clone https://github.com/hzylyh/webUIAT.git
+cd webUIAT
+
+# 2.新建虚拟环境
 python3 -m venv ./venv
 
-# 2.安装依赖
+# 3.安装依赖
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 
-# 3.运行项目
+# 4.运行项目
 python3 main.py
 ```
