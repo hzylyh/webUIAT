@@ -21,10 +21,16 @@ cd webUIAT
 # 2.新建虚拟环境
 python3 -m venv ./venv
 
-# 3.安装依赖
+# 3.激活虚拟环境
+# linux
+./venv/bin/activate
+# windows
+venv\Scripts\activate
+
+# 4.安装依赖
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 
-# 4.运行项目
+# 5.运行项目
 python3 main.py
 ```
 
