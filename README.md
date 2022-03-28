@@ -27,3 +27,6 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 # 4.运行项目
 python3 main.py
 ```
+
+## 使用说明
+待完善
