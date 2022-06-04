@@ -14,10 +14,10 @@ class CaseEntity:
         self.module_name = case_list[1]
         self.case_name = case_list[2]
         self.step = case_list[3]
-        self.page = case_list[4]
-        self.prop = case_list[5]
-        self.val = case_list[6]
-        self.expect_val = case_list[7]
+        self.po = case_list[4]
+        self.po_attr = case_list[5]
+        self.input_value = case_list[6]
+        self.expect_value = case_list[7]
 
     # # getter
     # @property

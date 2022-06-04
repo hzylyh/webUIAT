@@ -111,4 +111,8 @@ click等
 第四步：运行程序
 
 
-
+## FAQ
+如遇到mac无法验证的情况，执行如下命令
+```shell
+xattr -d com.apple.quarantine chromedriver
+```
