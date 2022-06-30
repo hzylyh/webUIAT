@@ -16,6 +16,7 @@ from typing import List, Dict
 from selenium import webdriver
 from constant.constant import *
 from main import db
+from utils.common import get_time
 
 
 def load_case() -> List[CaseEntity]:
@@ -73,13 +74,17 @@ def run():
     driver = webdriver.Chrome(executable_path=PROJECT['selenium']['driver-path'], options=option)
     driver.get(PROJECT['selenium']['web-url'])
     driver.maximize_window()
+
     for case in cases:
         handle = po_manager[case['po']][case['po_attr']]
         try:
             if execute(driver, handle, case):
-                db.create('insert into tb_result(`case_name`, `case_step`, `result`) values (%s, %s, %s)', (case['case_name'], case['step'], "0"))
+                db.create('insert into tb_result(`case_id`, `result`, `start_time`) values (%s, %s, %s)',
+                          (case['case_id'], "0", get_time()))
             else:
-                db.create('insert into tb_result(`case_name`, `case_step`, `result`) values (%s, %s, %s)', (case['case_name'], case['step'], "1"))
+                db.create('insert into tb_result(`case_id`, `result`, `start_time`) values (%s, %s, %s)',
+                          (case['case_id'], "1", get_time()))
         except Exception as e:
             print(e)
-            db.create('insert into tb_result(`case_name`, `case_step`, `result`) values (%s, %s, %s)', (case['case_name'], case['step'], "1"))
+            db.create('insert into tb_result(`case_id`, `result`, `start_time`) values (%s, %s, %s)',
+                      (case['case_id'], "1", get_time()))
