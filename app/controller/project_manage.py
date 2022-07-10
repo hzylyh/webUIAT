@@ -18,12 +18,15 @@ from flask import request
 def add_project():
     project_info = request.get_json()
     print(project_info)
-    result = db.create('insert into tb_case(`case_name`, `module_name`, `step`, `po`, `po_attr`,'
-                       ' `input_value`, `expect_value`)'
-                       ' values (%s, %s, %s, %s, %s, %s, %s)',
-                       (project_info['case_name'], project_info['module_name'], project_info['step'],
-                        project_info['po'], project_info['po_attr'], project_info['input_value'],
-                        project_info['expect_value']))
+    result = db.create('insert into tb_project(`project_id`, `project_name`, `project_desc`)'
+                       ' values (%s, %s, %s)',
+                       (project_info['project_id'], project_info['project_name'], project_info['project_desc']))
+    return ResponseUtil.success(result)
+
+@api.route('/projectManage/delete', methods=['POST'])
+def delete_project():
+    project_info = request.get_json()
+    result = db.create('delete from tb_project where project_id = %s', (project_info['project_id']))
     return ResponseUtil.success(result)
 
 
