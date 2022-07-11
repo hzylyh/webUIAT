@@ -23,10 +23,18 @@ def add_project():
                        (project_info['project_id'], project_info['project_name'], project_info['project_desc']))
     return ResponseUtil.success(result)
 
+
 @api.route('/projectManage/delete', methods=['POST'])
 def delete_project():
     project_info = request.get_json()
     result = db.create('delete from tb_project where project_id = %s', (project_info['project_id']))
+    return ResponseUtil.success(result)
+
+
+@api.route('/projectManage/detail', methods=['POST'])
+def detail_project():
+    project_info = request.get_json()
+    result = db.get_one('select * from tb_project where project_id = %s', (project_info['project_id']))
     return ResponseUtil.success(result)
 
 

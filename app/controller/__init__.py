@@ -11,4 +11,4 @@ from flask import Blueprint
 
 api = Blueprint('api', __name__)
 
-from . import dashboard, engine, case_manage, project_manage
+from . import dashboard, engine, case_manage, project_manage, page_manage
