@@ -18,9 +18,17 @@ from flask import request
 def add_case():
     case_info = request.get_json()
     print(case_info)
-    result = db.create('insert into tb_case(`case_name`, `module_name`, `step`, `po`, `po_attr`, `input_value`, `expect_value`)'
-                       ' values (%s, %s, %s, %s, %s, %s, %s)', (case_info['case_name'], case_info['module_name'], case_info['step'],
-                                                                case_info['po'], case_info['po_attr'], case_info['input_value'], case_info['expect_value']))
+    result = db.create('insert into tb_case(`case_id`, `case_name`, `module_name`, `step`, `po`, `po_attr`,'
+                       ' `input_value`, `expect_value`) values (%s, %s, %s, %s, %s, %s, %s, %s)',
+                       (case_info['case_id'], case_info['case_name'], case_info['module_name'], case_info['step'],
+                        case_info['po'], case_info['po_attr'], case_info['input_value'], case_info['expect_value']))
+    return ResponseUtil.success(result)
+
+
+@api.route('/caseManage/delete', methods=['POST'])
+def delete_case():
+    case_info = request.get_json()
+    result = db.create('delete from tb_case where case_id = %s', (case_info['case_id']))
     return ResponseUtil.success(result)
 
 
@@ -30,9 +38,11 @@ def get_case_list():
     print(result)
     return ResponseUtil.success(result)
 
+
 @api.route('/caseManage/getCaseResult', methods=['POST'])
 def get_case_result():
-    result = db.get_list('select tc.case_id, tc.module_name, tc.case_name, tc.step, tr.start_time, tr.result from tb_result tr '
+    result = db.get_list('select tc.case_id, tc.module_name, tc.case_name, tc.step, tr.start_time, tr.result'
+                         ' from tb_result tr '
                          'left join tb_case tc on tc.case_id = tr.case_id')
     print(result)
     return ResponseUtil.success(result)
