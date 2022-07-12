@@ -42,18 +42,21 @@ class SQLManager(object):
 
     # 查询多条数据
     def get_list(self, sql, args=None):
+        self.conn.ping(reconnect=True)
         self.cursor.execute(sql, args)
         result = self.cursor.fetchall()
         return result
 
     # 查询单条数据
     def get_one(self, sql, args=None):
+        self.conn.ping(reconnect=True)
         self.cursor.execute(sql, args)
         result = self.cursor.fetchone()
         return result
 
     # 执行单条SQL语句
     def moddify(self, sql, args=None):
+        self.conn.ping(reconnect=True)
         self.cursor.execute(sql, args)
         self.conn.commit()
 
@@ -63,11 +66,13 @@ class SQLManager(object):
     # 方法就可以了。
     # 执行多条SQL语句
     def multi_modify(self, sql, args=None):
+        self.conn.ping(reconnect=True)
         self.cursor.executemany(sql, args)
         self.conn.commit()
 
     # 创建单条记录的语句
     def create(self, sql, args=None):
+        self.conn.ping(reconnect=True)
         self.cursor.execute(sql, args)
         self.conn.commit()
         last_id = self.cursor.lastrowid
