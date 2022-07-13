@@ -18,10 +18,11 @@ from flask import request
 def add_case():
     case_info = request.get_json()
     print(case_info)
-    result = db.create('insert into tb_case(`case_id`, `case_name`, `module_name`, `step`, `po`, `po_attr`,'
-                       ' `input_value`, `expect_value`) values (%s, %s, %s, %s, %s, %s, %s, %s)',
+    result = db.create('insert into tb_case(`case_id`, `case_name`, `module_name`, `step`, `po_id`, `page_id`,'
+                       ' `input_value`, `expect_value`, `project_id`) values (%s, %s, %s, %s, %s, %s, %s, %s, %s)',
                        (case_info['case_id'], case_info['case_name'], case_info['module_name'], case_info['step'],
-                        case_info['po'], case_info['po_attr'], case_info['input_value'], case_info['expect_value']))
+                        case_info['po_id'], case_info['page_id'], case_info['input_value'], case_info['expect_value'],
+                        case_info['project_id']))
     return ResponseUtil.success(result)
 
 
@@ -34,7 +35,9 @@ def delete_case():
 
 @api.route('/caseManage/getCaseList', methods=['POST'])
 def get_case_list():
-    result = db.get_list('select * from tb_case')
+    case_info = request.get_json()
+    result = db.get_list('select * from tb_case where project_id = %s order by create_time asc',
+                         (case_info['project_id']))
     print(result)
     return ResponseUtil.success(result)
 

@@ -19,13 +19,13 @@ from main import db
 from utils.common import get_time
 
 
-def load_case() -> List[CaseEntity]:
+def load_case(project_id: str) -> List[CaseEntity]:
     """
     加载用例
     :rtype: object
     """
     # return case_handler.from_csv()
-    return case_handler.from_database()
+    return case_handler.from_database(project_id)
 
 
 def load_po() -> Dict:
@@ -43,7 +43,8 @@ def execute(driver: WebDriver, handle: Dict, case: CaseEntity) -> bool:
     """
     # ele = driver.find_element(by=handle['type'], value=handle['value'])
     flag: str = "0"
-    ele = WebDriverWait(driver, 15).until(lambda x: x.find_element(by=handle['type'], value=handle['value']))
+    ele = WebDriverWait(driver, 15).until(lambda x: x.find_element(by=handle['locate_type'],
+                                                                   value=handle['locate_value']))
     if handle['action'] == 'input':
         logging.info("input")
         ele.send_keys(case['input_value'])
@@ -62,12 +63,12 @@ def execute(driver: WebDriver, handle: Dict, case: CaseEntity) -> bool:
     return True
 
 
-def run():
+def run(project_id: str):
     """
     总执行方法
     :rtype: object
     """
-    cases = load_case()
+    cases = load_case(project_id)
     po_manager = load_po()
     option = webdriver.ChromeOptions()
     option.add_experimental_option("detach", True)
@@ -76,7 +77,9 @@ def run():
     driver.maximize_window()
 
     for case in cases:
-        handle = po_manager[case['po']][case['po_attr']]
+        # handle = po_manager[case['po']][case['po_attr']]
+        handle = db.get_one('select * from tb_page_object where po_id = %s', (case['po_id']))
+        print(handle)
         try:
             if execute(driver, handle, case):
                 db.create('insert into tb_result(`case_id`, `result`, `start_time`) values (%s, %s, %s)',

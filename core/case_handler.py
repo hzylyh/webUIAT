@@ -34,10 +34,10 @@ def from_csv() -> object:
     return cases
 
 
-def from_database() -> object:
+def from_database(project_id: str) -> object:
     """
     从数据库中读取测试用例
     :rtype: object
     """
-    cases = db.get_list('select * from tb_case')
+    cases = db.get_list('select * from tb_case where project_id = %s order by create_time asc', project_id)
     return cases
