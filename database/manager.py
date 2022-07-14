@@ -9,15 +9,21 @@ LastEditTime: 2022/5/11 09:32
 """
 
 import pymysql
+import threading
 
 DB_CONFIG = {
+    # "host": "192.168.1.201",
     "host": "127.0.0.1",
+    # "port": 3316,
     "port": 3306,
     "user": "root",
+    # "passwd": "Mysql_123",
     "passwd": "123456",
     "db": "ui_at",
     "charset": "utf8"
 }
+
+lock = threading.Lock()
 
 
 class SQLManager(object):
@@ -42,23 +48,29 @@ class SQLManager(object):
 
     # 查询多条数据
     def get_list(self, sql, args=None):
-        self.conn.ping(reconnect=True)
+        # self.conn.ping(reconnect=True)
+        lock.acquire()
         self.cursor.execute(sql, args)
         result = self.cursor.fetchall()
+        lock.release()
         return result
 
     # 查询单条数据
     def get_one(self, sql, args=None):
-        self.conn.ping(reconnect=True)
+        # self.conn.ping(reconnect=True)
+        lock.acquire()
         self.cursor.execute(sql, args)
         result = self.cursor.fetchone()
+        lock.release()
         return result
 
     # 执行单条SQL语句
     def moddify(self, sql, args=None):
-        self.conn.ping(reconnect=True)
+        # self.conn.ping(reconnect=True)
+        lock.acquire()
         self.cursor.execute(sql, args)
         self.conn.commit()
+        lock.release()
 
     # 我如果要批量执行多个创建操作，虽然只建立了一次数据库连接但是还是会多次提交，可不可以改成一次连接，
     # 一次提交呢？
@@ -66,15 +78,19 @@ class SQLManager(object):
     # 方法就可以了。
     # 执行多条SQL语句
     def multi_modify(self, sql, args=None):
-        self.conn.ping(reconnect=True)
+        # self.conn.ping(reconnect=True)
+        lock.acquire()
         self.cursor.executemany(sql, args)
         self.conn.commit()
+        lock.release()
 
     # 创建单条记录的语句
     def create(self, sql, args=None):
-        self.conn.ping(reconnect=True)
+        # self.conn.ping(reconnect=True)
+        lock.acquire()
         self.cursor.execute(sql, args)
         self.conn.commit()
+        lock.release()
         last_id = self.cursor.lastrowid
         return last_id
 

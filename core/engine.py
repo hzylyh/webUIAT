@@ -24,7 +24,6 @@ def load_case(project_id: str) -> List[CaseEntity]:
     加载用例
     :rtype: object
     """
-    # return case_handler.from_csv()
     return case_handler.from_database(project_id)
 
 
@@ -41,8 +40,6 @@ def execute(driver: WebDriver, handle: Dict, case: CaseEntity) -> bool:
     核心执行逻辑
     :rtype: object
     """
-    # ele = driver.find_element(by=handle['type'], value=handle['value'])
-    flag: str = "0"
     ele = WebDriverWait(driver, 15).until(lambda x: x.find_element(by=handle['locate_type'],
                                                                    value=handle['locate_value']))
     if handle['action'] == 'input':
@@ -69,25 +66,24 @@ def run(project_id: str):
     :rtype: object
     """
     cases = load_case(project_id)
-    po_manager = load_po()
     option = webdriver.ChromeOptions()
     option.add_experimental_option("detach", True)
     driver = webdriver.Chrome(executable_path=PROJECT['selenium']['driver-path'], options=option)
     driver.get(PROJECT['selenium']['web-url'])
     driver.maximize_window()
 
+    start_time = get_time()
     for case in cases:
-        # handle = po_manager[case['po']][case['po_attr']]
         handle = db.get_one('select * from tb_page_object where po_id = %s', (case['po_id']))
         print(handle)
         try:
             if execute(driver, handle, case):
                 db.create('insert into tb_result(`case_id`, `result`, `start_time`) values (%s, %s, %s)',
-                          (case['case_id'], "0", get_time()))
+                          (case['case_id'], "0", start_time))
             else:
                 db.create('insert into tb_result(`case_id`, `result`, `start_time`) values (%s, %s, %s)',
-                          (case['case_id'], "1", get_time()))
+                          (case['case_id'], "1", start_time))
         except Exception as e:
             print(e)
             db.create('insert into tb_result(`case_id`, `result`, `start_time`) values (%s, %s, %s)',
-                      (case['case_id'], "1", get_time()))
+                      (case['case_id'], "1", start_time))
