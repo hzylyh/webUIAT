@@ -60,7 +60,7 @@ def run(project_id: str):
     driver.get(PROJECT['selenium']['web-url'])
     driver.maximize_window()
     start_time = get_time()
-    cases = db.get_list('select * from tb_case where project_id = %s order by create_time asc', project_id)
+    cases = db.get_list('select * from tb_case where project_id = %s and is_run = "1" order by create_time asc', project_id)
     run_case(driver, cases, start_time)
 
 

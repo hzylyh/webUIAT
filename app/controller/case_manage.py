@@ -17,9 +17,10 @@ from flask import request
 @api.route('/caseManage/add', methods=['POST'])
 def add_case():
     case_info = request.get_json()
-    result = db.create('insert into tb_case(`case_id`, `case_name`, `case_desc`, `project_id`) '
-                       'values (%s, %s, %s, %s)',
-                       (case_info['case_id'], case_info['case_name'], case_info['case_desc'], case_info['project_id']))
+    result = db.create('insert into tb_case(`case_id`, `case_name`, `case_desc`, `is_run`, `project_id`) '
+                       'values (%s, %s, %s, %s, %s)',
+                       (case_info['case_id'], case_info['case_name'], case_info['is_run'],
+                        case_info['case_desc'], case_info['project_id']))
     return ResponseUtil.success(result)
 
 
@@ -33,8 +34,10 @@ def delete_case():
 @api.route('/caseManage/edit', methods=['POST'])
 def edit_case():
     case_info = request.get_json()
-    result = db.create('update tb_case set case_name = %s, case_desc = %s, case_creator = %s where case_id = %s',
-                       (case_info['case_name'], case_info['case_desc'], case_info['case_creator'], case_info['case_id']))
+    result = db.create('update tb_case set case_name = %s, case_desc = %s, is_run = %s, case_creator = %s '
+                       'where case_id = %s',
+                       (case_info['case_name'], case_info['case_desc'], case_info['is_run'],
+                        case_info['case_creator'], case_info['case_id']))
     return ResponseUtil.success(result)
 
 
