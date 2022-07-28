@@ -54,31 +54,33 @@ def run(project_id: str):
     总执行方法
     :rtype: object
     """
+    option = webdriver.ChromeOptions()
+    option.add_experimental_option("detach", True)
+    driver = webdriver.Chrome(executable_path=PROJECT['selenium']['driver-path'], options=option)
+    driver.get(PROJECT['selenium']['web-url'])
+    driver.maximize_window()
     start_time = get_time()
     cases = db.get_list('select * from tb_case where project_id = %s order by create_time asc', project_id)
-    run_case(cases, start_time)
+    run_case(driver, cases, start_time)
 
 
-def run_case(case_list: list, start_time: str):
+def run_case(driver: WebDriver, case_list: list, start_time: str):
     """
     case: {
         caseId
     }
+    :param driver:
     :param start_time:
     :param case_list:
     :return:
     """
     for case in case_list:
         steps = db.get_list('select * from tb_case_step where case_id = %s order by create_time asc', case['case_id'])
-        run_case_step(steps, start_time)
+        run_case_step(driver, steps, start_time)
 
 
-def run_case_step(case_steps, start_time):
-    option = webdriver.ChromeOptions()
-    option.add_experimental_option("detach", True)
-    driver = webdriver.Chrome(executable_path=PROJECT['selenium']['driver-path'], options=option)
-    driver.get(PROJECT['selenium']['web-url'])
-    driver.maximize_window()
+def run_case_step(driver, case_steps, start_time):
+
     for step in case_steps:
         print(step)
         handle = db.get_one('select * from tb_page_object where po_id = %s', (step['po_id']))

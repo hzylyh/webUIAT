@@ -32,6 +32,17 @@ def delete_page_object():
     return ResponseUtil.success(result)
 
 
+@api.route('/pageObjectManage/edit', methods=['POST'])
+def edit_page_object():
+    po_info = request.get_json()
+    result = db.create('update tb_page_object '
+                       'set po_name = %s, locate_type = %s, locate_value = %s, `action` = %s, page_id = %s '
+                       'where po_id = %s',
+                       (po_info['po_name'], po_info['locate_type'], po_info['locate_value'], po_info['action'],
+                        po_info['page_id'], po_info['po_id']))
+    return ResponseUtil.success(result)
+
+
 @api.route('/pageObjectManage/list', methods=['POST'])
 def get_page_object_list():
     po_info = request.get_json()

@@ -46,11 +46,11 @@ def get_case_list():
     return ResponseUtil.success(result)
 
 
-@api.route('/caseManage/getCaseResult', methods=['POST'])
-def get_case_result():
-    project_info = request.get_json()
-    result = db.get_list('select tc.case_id, tc.module_name, tc.case_name, tc.step, tr.start_time, tr.result, tr.message'
-                         ' from tb_result tr '
-                         'left join tb_case tc on tc.case_id = tr.case_id'
-                         ' where tr.start_time = %s', project_info['start_time'])
-    return ResponseUtil.success(result)
+# @api.route('/caseManage/getCaseResult', methods=['POST'])
+# def get_case_result():
+#     project_info = request.get_json()
+#     result = db.get_list('select tc.case_id, tc.module_name, tc.case_name, tc.step, tr.start_time, tr.result, tr.message'
+#                          ' from tb_result tr '
+#                          'left join tb_case tc on tc.case_id = tr.case_id'
+#                          ' where tr.start_time = %s', project_info['start_time'])
+#     return ResponseUtil.success(result)
