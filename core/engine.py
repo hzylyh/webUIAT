@@ -8,34 +8,15 @@ LastEditTime: 2022-03-19 15:12:43
 """
 import logging
 
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
-from core import case_handler
-from core import po_handler
 from entity.case_entity import CaseEntity
-from typing import List, Dict
+from typing import Dict
 from selenium import webdriver
 from constant.constant import *
 from main import db
 from utils.common import get_time
-from selenium.webdriver.support import expected_conditions as EC
-
-
-def load_case(project_id: str) -> List[CaseEntity]:
-    """
-    加载用例
-    :rtype: object
-    """
-    return case_handler.from_database(project_id)
-
-
-def load_po() -> Dict:
-    """
-    加载po
-    :rtype: object
-    """
-    return po_handler.load_project()
 
 
 def execute(driver: WebDriver, handle: Dict, case: CaseEntity) -> (str, str):
@@ -46,8 +27,6 @@ def execute(driver: WebDriver, handle: Dict, case: CaseEntity) -> (str, str):
     try:
         ele = WebDriverWait(driver, 15, ignored_exceptions=None).until(lambda x: x.find_element(by=handle['locate_type'],
                                                                        value=handle['locate_value']))
-        # ele = WebDriverWait(driver, 15, ignored_exceptions=None).until(EC.presence_of_element_located(
-        #     (handle['locate_type'], handle['locate_value'])))
         if handle['action'] == 'input':
             logging.info("input")
             ele.send_keys(case['input_value'])
@@ -75,16 +54,36 @@ def run(project_id: str):
     总执行方法
     :rtype: object
     """
-    cases = load_case(project_id)
+    start_time = get_time()
+    cases = db.get_list('select * from tb_case where project_id = %s order by create_time asc', project_id)
+    run_case(cases, start_time)
+
+
+def run_case(case_list: list, start_time: str):
+    """
+    case: {
+        caseId
+    }
+    :param start_time:
+    :param case_list:
+    :return:
+    """
+    for case in case_list:
+        steps = db.get_list('select * from tb_case_step where case_id = %s order by create_time asc', case['case_id'])
+        run_case_step(steps, start_time)
+
+
+def run_case_step(case_steps, start_time):
     option = webdriver.ChromeOptions()
     option.add_experimental_option("detach", True)
     driver = webdriver.Chrome(executable_path=PROJECT['selenium']['driver-path'], options=option)
     driver.get(PROJECT['selenium']['web-url'])
     driver.maximize_window()
+    for step in case_steps:
+        print(step)
+        handle = db.get_one('select * from tb_page_object where po_id = %s', (step['po_id']))
+        code, msg = execute(driver, handle, step)
+        # db.create('insert into tb_result(`case_id`, `result`, `message`, `start_time`) values (%s, %s, %s, %s)',
+        #           (case['case_id'], code, msg, start_time))
 
-    start_time = get_time()
-    for case in cases:
-        handle = db.get_one('select * from tb_page_object where po_id = %s', (case['po_id']))
-        code, msg = execute(driver, handle, case)
-        db.create('insert into tb_result(`case_id`, `result`, `message`, `start_time`) values (%s, %s, %s, %s)',
-                  (case['case_id'], code, msg, start_time))
+
