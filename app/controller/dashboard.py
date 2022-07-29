@@ -19,10 +19,11 @@ def get_info():
     project_info = request.get_json()
 
     # TODO 将几个sql合并，避免多次查询消耗
-    last_run_time = db.get_one('select distinct tr.start_time from tb_case tc '
-                               'left join tb_result tr on tc.case_id = tr.case_id '
+    last_run_time = db.get_one('select tr.start_time from tb_result tr '
+                               'left join tb_case_step tcs on tr.step_id = tcs.step_id '
+                               'left join tb_case tc on tcs.case_id = tc.case_id '
                                'where tc.project_id = %s '
-                               'order by tr.start_time desc limit 1;', project_info['project_id'])
+                               'order by tr.start_time desc limit 1', project_info['project_id'])
     case_num = db.get_one('select count(1) as case_num from tb_case tc where tc.project_id = %s',
                           project_info['project_id'])
     # success_num = db.get_one("select count(1) as success_num from tb_result tr "
@@ -38,3 +39,17 @@ def get_info():
         # "fail_num": fail_num['fail_num']
     }
     return ResponseUtil.success(res)
+
+
+@api.route('/dashboard/getCaseResult', methods=['POST'])
+def get_case_result():
+    project_info = request.get_json()
+    result = db.get_list('select tcs.step_id, tc.case_name, tcs.step_name, tr.start_time, tr.result, tr.message '
+                         'from tb_result tr '
+                         'left join tb_case_step tcs '
+                         'on tr.step_id = tcs.step_id '
+                         'left join tb_case tc '
+                         'on tcs.case_id = tc.case_id '
+                         'where tr.start_time = %s',
+                         project_info['start_time'])
+    return ResponseUtil.success(result)

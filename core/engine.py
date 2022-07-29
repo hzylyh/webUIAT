@@ -80,12 +80,11 @@ def run_case(driver: WebDriver, case_list: list, start_time: str):
 
 
 def run_case_step(driver, case_steps, start_time):
-
     for step in case_steps:
-        print(step)
         handle = db.get_one('select * from tb_page_object where po_id = %s', (step['po_id']))
         code, msg = execute(driver, handle, step)
-        # db.create('insert into tb_result(`case_id`, `result`, `message`, `start_time`) values (%s, %s, %s, %s)',
-        #           (case['case_id'], code, msg, start_time))
+        db.create('insert into tb_result(`step_id`, `result`, `message`, `start_time`) '
+                  'values (%s, %s, %s, %s)',
+                  (step['step_id'], code, msg, start_time))
 
 
