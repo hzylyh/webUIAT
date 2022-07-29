@@ -32,6 +32,17 @@ def delete_case_step():
     return ResponseUtil.success(result)
 
 
+@api.route('/caseStepManage/edit', methods=['POST'])
+def edit_case_step():
+    case_step_info = request.get_json()
+    result = db.create('update tb_case_step set step_name = %s, page_id = %s, '
+                       'po_id = %s, input_value = %s, expect_value = %s '
+                       'where step_id = %s',
+                       (case_step_info['step_name'], case_step_info['page_id'], case_step_info['po_id'],
+                        case_step_info['input_value'], case_step_info['expect_value'], case_step_info['step_id']))
+    return ResponseUtil.success(result)
+
+
 @api.route('/caseStepManage/list', methods=['POST'])
 def get_case_step_list():
     case_step_info = request.get_json()
