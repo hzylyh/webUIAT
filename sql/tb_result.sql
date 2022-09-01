@@ -1,0 +1,76 @@
+create table tb_result
+(
+    case_id    varchar(32) null,
+    step_id    varchar(32) null comment '用例步骤ID',
+    message    text        null,
+    start_time varchar(32) null,
+    result     varchar(2)  null
+);
+
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-28 19:32:59', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-28 19:32:59', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-28 19:32:59', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-28 20:01:47', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-28 20:01:47', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-28 20:01:47', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 14:46:19', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 14:46:19', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 14:46:19', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 14:46:41', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 14:46:41', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 14:46:41', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'sfd6RWickDmmPSoLxjcLC', 'ElementNotInteractableException(''element not interactable\\n  (Session info: chrome=103.0.5060.134)'', None, [''0   chromedriver                        0x0000000102bbdd14 chromedriver + 3792148'', ''1   chromedriver                        0x0000000102b54828 chromedriver + 3360808'', ''2   chromedriver                        0x0000000102854f88 chromedriver + 216968'', ''3   chromedriver                        0x0000000102885cf0 chromedriver + 417008'', ''4   chromedriver                        0x000000010287bc28 chromedriver + 375848'', ''5   chromedriver                        0x000000010287b614 chromedriver + 374292'', ''6   chromedriver                        0x00000001028ada60 chromedriver + 580192'', ''7   chromedriver                        0x000000010287a318 chromedriver + 369432'', ''8   chromedriver                        0x0000000102b931e8 chromedriver + 3617256'', ''9   chromedriver                        0x0000000102b97678 chromedriver + 3634808'', ''10  chromedriver                        0x0000000102b9bc6c chromedriver + 3652716'', ''11  chromedriver                        0x0000000102b98110 chromedriver + 3637520'', ''12  chromedriver                        0x0000000102b767ac chromedriver + 3499948'', ''13  chromedriver                        0x0000000102bafbf0 chromedriver + 3734512'', ''14  chromedriver                        0x0000000102bafd54 chromedriver + 3734868'', ''15  chromedriver                        0x0000000102bc4558 chromedriver + 3818840'', ''16  libsystem_pthread.dylib             0x00000001afefc26c _pthread_start + 148'', ''17  libsystem_pthread.dylib             0x00000001afef708c thread_start + 8'', ''''])', '2022-07-29 14:46:41', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'hOXWRXYqtxjahgQfJdAhn', '实际：超级管理员 不等于 预期：', '2022-07-29 14:46:41', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 14:47:56', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 14:47:56', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 14:47:56', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'sfd6RWickDmmPSoLxjcLC', '', '2022-07-29 14:47:56', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'hOXWRXYqtxjahgQfJdAhn', '实际：超级管理员 不等于 预期：', '2022-07-29 14:47:56', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 14:48:39', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 14:48:39', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 14:48:39', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 16:18:14', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 16:18:14', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 16:18:14', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 16:33:47', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 16:33:47', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 16:33:47', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 16:34:53', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 16:34:53', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 16:34:53', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 16:41:30', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 16:41:30', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 16:41:30', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 16:41:41', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 16:41:41', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 16:41:41', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'sfd6RWickDmmPSoLxjcLC', 'ElementNotInteractableException(''element not interactable\\n  (Session info: chrome=103.0.5060.134)'', None, [''0   chromedriver                        0x0000000102ef5d14 chromedriver + 3792148'', ''1   chromedriver                        0x0000000102e8c828 chromedriver + 3360808'', ''2   chromedriver                        0x0000000102b8cf88 chromedriver + 216968'', ''3   chromedriver                        0x0000000102bbdcf0 chromedriver + 417008'', ''4   chromedriver                        0x0000000102bb3c28 chromedriver + 375848'', ''5   chromedriver                        0x0000000102bb3614 chromedriver + 374292'', ''6   chromedriver                        0x0000000102be5a60 chromedriver + 580192'', ''7   chromedriver                        0x0000000102bb2318 chromedriver + 369432'', ''8   chromedriver                        0x0000000102ecb1e8 chromedriver + 3617256'', ''9   chromedriver                        0x0000000102ecf678 chromedriver + 3634808'', ''10  chromedriver                        0x0000000102ed3c6c chromedriver + 3652716'', ''11  chromedriver                        0x0000000102ed0110 chromedriver + 3637520'', ''12  chromedriver                        0x0000000102eae7ac chromedriver + 3499948'', ''13  chromedriver                        0x0000000102ee7bf0 chromedriver + 3734512'', ''14  chromedriver                        0x0000000102ee7d54 chromedriver + 3734868'', ''15  chromedriver                        0x0000000102efc558 chromedriver + 3818840'', ''16  libsystem_pthread.dylib             0x00000001afefc26c _pthread_start + 148'', ''17  libsystem_pthread.dylib             0x00000001afef708c thread_start + 8'', ''''])', '2022-07-29 16:41:41', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'hOXWRXYqtxjahgQfJdAhn', '实际：超级管理员 不等于 预期：', '2022-07-29 16:41:41', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 16:42:13', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 16:42:13', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 16:42:13', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'sfd6RWickDmmPSoLxjcLC', '', '2022-07-29 16:42:13', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'hOXWRXYqtxjahgQfJdAhn', '实际：超级管理员 不等于 预期：', '2022-07-29 16:42:13', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 16:43:25', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 16:43:25', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 16:43:25', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'sfd6RWickDmmPSoLxjcLC', '', '2022-07-29 16:43:25', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'hOXWRXYqtxjahgQfJdAhn', '实际：超级管理员 不等于 预期：', '2022-07-29 16:43:25', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 16:44:18', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 16:44:18', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 16:44:18', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'sfd6RWickDmmPSoLxjcLC', '', '2022-07-29 16:44:18', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'hOXWRXYqtxjahgQfJdAhn', '实际：超级管理员 不等于 预期：', '2022-07-29 16:44:18', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'zo4vsa1_PLckZc9z-Cwu2', 'NoSuchWindowException(''no such window: window was already closed\\n  (Session info: chrome=103.0.5060.134)'', None, [''0   chromedriver                        0x0000000102669d14 chromedriver + 3792148'', ''1   chromedriver                        0x0000000102600828 chromedriver + 3360808'', ''2   chromedriver                        0x00000001023010b8 chromedriver + 217272'', ''3   chromedriver                        0x00000001022f2fd0 chromedriver + 159696'', ''4   chromedriver                        0x00000001022ed5e8 chromedriver + 136680'', ''5   chromedriver                        0x000000010235927c chromedriver + 578172'', ''6   chromedriver                        0x0000000102326318 chromedriver + 369432'', ''7   chromedriver                        0x000000010263f1e8 chromedriver + 3617256'', ''8   chromedriver                        0x0000000102643678 chromedriver + 3634808'', ''9   chromedriver                        0x0000000102647c6c chromedriver + 3652716'', ''10  chromedriver                        0x0000000102644110 chromedriver + 3637520'', ''11  chromedriver                        0x00000001026227ac chromedriver + 3499948'', ''12  chromedriver                        0x000000010265bbf0 chromedriver + 3734512'', ''13  chromedriver                        0x000000010265bd54 chromedriver + 3734868'', ''14  chromedriver                        0x0000000102670558 chromedriver + 3818840'', ''15  libsystem_pthread.dylib             0x00000001afefc26c _pthread_start + 148'', ''16  libsystem_pthread.dylib             0x00000001afef708c thread_start + 8'', ''''])', '2022-07-29 16:44:18', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-07-29 16:46:36', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-07-29 16:46:36', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-07-29 16:46:36', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'sfd6RWickDmmPSoLxjcLC', '', '2022-07-29 16:46:36', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'hOXWRXYqtxjahgQfJdAhn', '实际：超级管理员 不等于 预期：', '2022-07-29 16:46:36', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'zo4vsa1_PLckZc9z-Cwu2', '15秒内没找到对应元素，请确认定位是否正确', '2022-07-29 16:46:36', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'Gh26TFdby4YwdfZrao5R5', '', '2022-08-01 19:35:26', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, '16dfK0DFRD8p7lahHi7zP', '', '2022-08-01 19:35:26', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'NpaefwSeb2ZikPmTOpWwb', '', '2022-08-01 19:35:26', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'sfd6RWickDmmPSoLxjcLC', '', '2022-08-01 19:35:26', '0');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'hOXWRXYqtxjahgQfJdAhn', '实际：超级管理员 不等于 预期：', '2022-08-01 19:35:26', '1');
+INSERT INTO ui_at.tb_result (case_id, step_id, message, start_time, result) VALUES (null, 'zo4vsa1_PLckZc9z-Cwu2', '15秒内没找到对应元素，请确认定位是否正确', '2022-08-01 19:35:26', '1');

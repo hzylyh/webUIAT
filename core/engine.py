@@ -7,6 +7,7 @@ LastEditors: John Holl
 LastEditTime: 2022-03-19 15:12:43
 """
 import logging
+import time
 
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -57,11 +58,15 @@ def run(project_id: str):
     option = webdriver.ChromeOptions()
     option.add_experimental_option("detach", True)
     driver = webdriver.Chrome(executable_path=PROJECT['selenium']['driver-path'], options=option)
+    start_time = get_time()
+    time_start = time.time()
     driver.get(PROJECT['selenium']['web-url'])
     driver.maximize_window()
-    start_time = get_time()
     cases = db.get_list('select * from tb_case where project_id = %s and is_run = "1" order by create_time asc', project_id)
     run_case(driver, cases, start_time)
+    time_end = time.time()
+    time_sum = time_end - time_start
+    print(time_sum)
 
 
 def run_case(driver: WebDriver, case_list: list, start_time: str):
